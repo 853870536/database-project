@@ -165,7 +165,7 @@ INSERT INTO `t_permission` VALUES (19, '公告管理', '公告管理', 'notice',
 INSERT INTO `t_permission` VALUES (24, '日志管理', '日志管理', 'log', 'notebook-2');
 INSERT INTO `t_permission` VALUES (25, '在线留言', '在线留言', 'message', 'message');
 INSERT INTO `t_permission` VALUES (31, '图书管理', '图书管理', 'book', 's-data');
-
+INSERT INTO `t_permission` VALUES (32, '文献管理', '文献管理', 'paper', 's-data');
 -- ----------------------------
 -- Table structure for t_role
 -- ----------------------------
