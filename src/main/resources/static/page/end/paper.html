@@ -32,26 +32,25 @@
     </div>
 
     <el-table :data="tableData" border style="width: 100%">
-        <el-table-column prop="id" label="ID" width="50"></el-table-column>
-        <el-table-column prop="title" label="标题"></el-table-column>
+        <el-table-column prop="id" label="ID" width="70" sortable></el-table-column>
+        <el-table-column prop="title" label="标题" sortable></el-table-column>
         <el-table-column prop="author" label="作者"></el-table-column>
         <el-table-column prop="conference" label="发表会议 "></el-table-column>
-        <el-table-column prop="date" label="发布日期"></el-table-column>
+        <el-table-column prop="date" label="发布日期" sortable></el-table-column>
         <el-table-column prop="link" label="链接"></el-table-column>
-        <el-table-column prop="tag_id" label="标签"></el-table-column>
         <el-table-column prop="ref_id" label="引用"></el-table-column>
 
         <el-table-column
-                label="引用2" width="600">
+                label="引用2" width="400">
             <template slot-scope="scope">
                 <el-button type="text" @click="setPer(scope.row)">引用设置</el-button>
             </template>
         </el-table-column>
 
         <el-table-column
-                label="角色">
+                label="标签" width="200">
             <template slot-scope="scope">
-                <el-select v-model="scope.row.role" value-key="id" multiple placeholder="请选择" @change="changeRole(scope.row)">
+                <el-select v-model="scope.row.tag" value-key="id" multiple placeholder="请选择" @change="changeTag(scope.row)">
                     <el-option
                             v-for="item in options"
                             :key="item.id"
@@ -194,7 +193,7 @@
                     this.total = res.data.total;
                 });
 
-                $.get("/api/permission").then(res => {
+                $.get("/api/tag").then(res => {
                     this.options = res.data;
                 })
             },
