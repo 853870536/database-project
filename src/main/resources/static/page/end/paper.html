@@ -131,16 +131,24 @@
         </el-pagination>
     </div>
 
-    <el-dialog title="引用信息" :visible.sync="dialogFormVisible" width="40%"
-               :close-on-click-modal="false" >
+    <el-dialog title="文献信息" :visible.sync="dialogFormVisible" width="40%"
+               :close-on-click-modal="false">
         <el-form :model="entity">
-            <el-form-item label="标题" label-width="120px">
+            <el-form-item label="标题" label-width="100px">
                 <el-input v-model="entity.title" autocomplete="off" style="width: 80%"></el-input>
             </el-form-item>
-            <el-form-item label="描述" label-width="120px">
+            <el-form-item label="作者" label-width="100px">
                 <el-input v-model="entity.author" autocomplete="off" style="width: 80%"></el-input>
             </el-form-item>
-
+            <el-form-item label="发布会议" label-width="100px">
+                <el-input v-model="entity.conference" autocomplete="off" style="width: 80%"></el-input>
+            </el-form-item>
+            <el-form-item label="发布时间" label-width="100px">
+                <el-input v-model="entity.date" autocomplete="off" style="width: 80%"></el-input>
+            </el-form-item>
+            <el-form-item label="链接" label-width="100px">
+                <el-input v-model="entity.link" autocomplete="off" style="width: 80%"></el-input>
+            </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
             <el-button @click="dialogFormVisible = false">取 消</el-button>
