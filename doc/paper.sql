@@ -20,7 +20,7 @@ CREATE TABLE `paper`  (
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `paper` VALUES (1, '文献1', 'Caoqijun', 'A类', '2022-05-17', 'https://www.google.com/', '[1,2,3,19,27,30,31]', '[1]');
-INSERT INTO `paper` VALUES (2, '文献2', 'Caoqijun', 'A类', '2022-05-17', 'https://www.google.com/', '[1,2,3,19,27,30,31]', '[1]');
-INSERT INTO `paper` VALUES (3, '文献3', 'Caoqijun', 'A类', '2022-05-17', 'https://www.google.com/', '[1,2,3,19,27,30,31]', '[1]');
+INSERT INTO `paper` VALUES (1, '文献1', 'Caoqijun', 'A类', '2022-05-15', 'https://www.google.com/', '[1]', '[1]');
+INSERT INTO `paper` VALUES (2, '文献2', 'Caoqijun', 'A类', '2022-05-17', 'https://www.google.com/', '[2]', '[1]');
+INSERT INTO `paper` VALUES (3, '文献3', 'Caoqijun', 'A类', '2022-05-18', 'https://www.google.com/', '[3]', '[1]');
 

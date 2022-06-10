@@ -11,29 +11,14 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-@TableName(value = "paper", autoResultMap = true)
-public class Paper extends Model<Paper> {
+@TableName(value = "reference", autoResultMap = true)
+public class Reference extends Model<Reference> {
     /**
      * 主键
      */
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    private String title;
+    private String name;//引用内容
 
-    private String author;
-
-    private String conference;
-
-    private String date;
-
-    private String link;
-
-    @TableField(typeHandler = ListHandler.class)
-    private List<Long> tag_id;
-
-    @TableField(typeHandler = ListHandler.class)
-    private List<Long> ref_id;
-
-    private String ref_content;
 }

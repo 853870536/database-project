@@ -38,17 +38,37 @@
         <el-table-column prop="conference" label="发表会议 "></el-table-column>
         <el-table-column prop="date" label="发布日期" sortable></el-table-column>
         <el-table-column prop="link" label="链接"></el-table-column>
-        <el-table-column prop="ref_id" label="引用"></el-table-column>
 
         <el-table-column
-                label="引用2" width="400">
+                label="引用" width="400">
             <template slot-scope="scope">
-                <el-button type="text" @click="setPer(scope.row)">引用设置</el-button>
+                <el-button type="text" @click="setP(scope.row)">引用设置</el-button>
             </template>
         </el-table-column>
 
         <el-table-column
-                label="标签" width="200">
+                label="引用展示" width="200">
+            <template slot-scope="scope">
+                <el-select v-model="scope.row.reference" value-key="id" multiple placeholder="请选择" @change="changeTag(scope.row)">
+                    <el-option
+                            v-for="item in refers"
+                            :key="item.id"
+                            :label="item.name"
+                            :value="item.id">
+                    </el-option>
+                </el-select>
+            </template>
+        </el-table-column>
+
+        <el-table-column
+                label="标签" width="400">
+            <template slot-scope="scope">
+                <el-button type="text" @click="setPer(scope.row)">标签设置</el-button>
+            </template>
+        </el-table-column>
+
+        <el-table-column
+                label="标签展示" width="200">
             <template slot-scope="scope">
                 <el-select v-model="scope.row.tag" value-key="id" multiple placeholder="请选择" @change="changeTag(scope.row)">
                     <el-option
@@ -129,11 +149,11 @@
     </el-dialog>
 
 
-    <el-dialog title="引用菜单" :visible.sync="vis" width="40%"
+    <el-dialog title="引用菜单" :visible.sync="bool" width="40%"
                :close-on-click-modal="false" >
         <el-form :model="entity" style="width: 80%; margin: 0 auto; line-height: 40px">
             <el-checkbox-group v-model="entity.ref_id" >
-                <el-checkbox :label="item.id" v-for="item in options" :key="item.id">{{ item.name }}</el-checkbox>
+                <el-checkbox :label="item.id" v-for="item in refers" :key="item.id">{{ item.name }}</el-checkbox>
             </el-checkbox-group>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -142,6 +162,18 @@
         </div>
     </el-dialog>
 
+    <el-dialog title="标签菜单" :visible.sync="vis" width="40%"
+               :close-on-click-modal="false" >
+        <el-form :model="entity" style="width: 80%; margin: 0 auto; line-height: 40px">
+            <el-checkbox-group v-model="entity.tag_id" >
+                <el-checkbox :label="item.id" v-for="item in options" :key="item.id">{{ item.name }}</el-checkbox>
+            </el-checkbox-group>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button @click="vis = false">取 消</el-button>
+            <el-button type="primary" @click="save">确 定</el-button>
+        </div>
+    </el-dialog>
 </div>
 
 <script src="../../js/jquery.min.js"></script>
@@ -166,7 +198,9 @@
             isCollapse: false,
             search: '',
             options: [],
-            vis: false
+            refers: [],
+            vis: false,
+            bool: false
         },
         created() {
             this.user = sessionStorage.getItem("user") ? JSON.parse(sessionStorage.getItem("user")) : {};
@@ -178,6 +212,10 @@
             setPer(obj) {
                 this.entity = JSON.parse(JSON.stringify(obj))
                 this.vis = true;
+            },
+            setP(obj) {
+                this.entity = JSON.parse(JSON.stringify(obj))
+                this.bool = true;
             },
             handleCollapse() {
                 this.isCollapse = !this.isCollapse;
@@ -195,6 +233,10 @@
 
                 $.get("/api/tag").then(res => {
                     this.options = res.data;
+                })
+
+                $.get("/api/reference").then(res => {
+                    this.refers = res.data;
                 })
             },
             exp() {
