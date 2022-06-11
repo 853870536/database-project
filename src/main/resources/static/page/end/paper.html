@@ -40,7 +40,7 @@
         <el-table-column prop="link" label="链接"></el-table-column>
 
         <el-table-column
-                label="引用" width="400">
+                label="引用" width="200">
             <template slot-scope="scope">
                 <el-button type="text" @click="setP(scope.row)">引用设置</el-button>
             </template>
@@ -61,7 +61,7 @@
         </el-table-column>
 
         <el-table-column
-                label="标签" width="400">
+                label="标签" width="200">
             <template slot-scope="scope">
                 <el-button type="text" @click="setPer(scope.row)">标签设置</el-button>
             </template>
@@ -95,6 +95,8 @@
                 </el-popconfirm>
             </template>
         </el-table-column>
+
+        <el-table-column prop="note" label="笔记" width="200"></el-table-column>
     </el-table>
 
         <el-table-column

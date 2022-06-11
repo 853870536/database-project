@@ -14,13 +14,14 @@ CREATE TABLE `paper`  (
                          `link` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '链接',
                          `tag_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '标签',
                          `ref_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '引用',
+                         `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '笔记',
                          PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `paper` VALUES (1, '文献1', 'Caoqijun', 'A类', '2022-05-15', 'https://www.google.com/', '[1]', '[1]');
-INSERT INTO `paper` VALUES (2, '文献2', 'Caoqijun', 'A类', '2022-05-17', 'https://www.google.com/', '[2]', '[1]');
-INSERT INTO `paper` VALUES (3, '文献3', 'Caoqijun', 'A类', '2022-05-18', 'https://www.google.com/', '[3]', '[1]');
+INSERT INTO `paper` VALUES (1, '文献1', 'Caoqijun', 'A类', '2022-05-15', 'https://www.google.com/', '[1]', '[1]', '哇塞你好厉害');
+INSERT INTO `paper` VALUES (2, '文献2', 'Caoqijun', 'A类', '2022-05-17', 'https://www.google.com/', '[2]', '[1]', '哎呀我可没有');
+INSERT INTO `paper` VALUES (3, '文献3', 'Caoqijun', 'A类', '2022-05-18', 'https://www.google.com/', '[3]', '[1]', '不要再谦虚了！');
 

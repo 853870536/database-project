@@ -35,5 +35,5 @@ public class Paper extends Model<Paper> {
     @TableField(typeHandler = ListHandler.class)
     private List<Long> ref_id;
 
-    private String ref_content;
+    private String note;
 }
