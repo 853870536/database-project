@@ -119,9 +119,9 @@ CREATE TABLE `t_message`  (
 -- ----------------------------
 -- Records of t_message
 -- ----------------------------
-INSERT INTO `t_message` VALUES (16, '我来了', 'admin', '2021-04-23 23:15:57', NULL, 0);
-INSERT INTO `t_message` VALUES (17, '来了老弟', 'admin', '2021-04-23 23:17:46', 16, 0);
-INSERT INTO `t_message` VALUES (19, '今天直播', 'admin', '2021-04-24 11:08:41', 17, 0);
+INSERT INTO `t_message` VALUES (16, '我来了', 'admin', '2022-05-23 23:15:57', NULL, 0);
+INSERT INTO `t_message` VALUES (17, '来了老弟', 'admin', '2022-05-23 23:17:46', 16, 0);
+INSERT INTO `t_message` VALUES (19, '今天直播', 'admin', '2022-05-24 11:08:41', 17, 0);
 
 -- ----------------------------
 -- Table structure for t_notice
@@ -138,9 +138,9 @@ CREATE TABLE `t_notice`  (
 -- ----------------------------
 -- Records of t_notice
 -- ----------------------------
-INSERT INTO `t_notice` VALUES (4, '学习', '别问！问就是3连！', '2021-05-17 15:29:29');
-INSERT INTO `t_notice` VALUES (5, '快乐是什么？', '快乐就是一杯咖啡，一个键盘，从早到晚', '2021-05-17 15:30:08');
-INSERT INTO `t_notice` VALUES (6, 'Java是什么', 'Java是世界上最好的语言', '2021-05-17 15:30:42');
+INSERT INTO `t_notice` VALUES (4, '学习', '别问！问就是3连！', '2022-05-17 15:29:29');
+INSERT INTO `t_notice` VALUES (5, '快乐是什么？', '快乐就是一杯咖啡，一个键盘，从早到晚', '2022-05-17 15:30:08');
+INSERT INTO `t_notice` VALUES (6, 'Java是什么', 'Java是世界上最好的语言', '2022-05-17 15:30:42');
 
 -- ----------------------------
 -- Table structure for t_permission
