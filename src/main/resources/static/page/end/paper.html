@@ -49,7 +49,7 @@
         <el-table-column
                 label="引用展示" width="200">
             <template slot-scope="scope">
-                <el-select v-model="scope.row.reference" value-key="id" multiple placeholder="请选择" @change="changeTag(scope.row)">
+                <el-select v-model="scope.row.reference" value-key="id" multiple placeholder="请选择" @change="changeReference(scope.row)">
                     <el-option
                             v-for="item in refers"
                             :key="item.id"
@@ -151,6 +151,9 @@
             <el-form-item label="链接" label-width="100px">
                 <el-input v-model="entity.link" autocomplete="off" style="width: 80%"></el-input>
             </el-form-item>
+            <el-form-item label="笔记" label-width="100px">
+                <el-input v-model="entity.note" autocomplete="off" style="width: 80%"></el-input>
+            </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
             <el-button @click="dialogFormVisible = false">取 消</el-button>
@@ -198,7 +201,7 @@
     new Vue({
         el: "#wrapper",
         data: {
-            user: {},
+            paper: {},
             tableData: [],
             pageNum: 1,
             pageSize: 10,
@@ -213,12 +216,20 @@
             bool: false
         },
         created() {
-            this.user = sessionStorage.getItem("user") ? JSON.parse(sessionStorage.getItem("user")) : {};
+            this.paper = sessionStorage.getItem("paper") ? JSON.parse(sessionStorage.getItem("paper")) : {};
             this.loadTable();
 
 
         },
         methods: {
+            changeTag(row) {
+                this.entity = JSON.parse(JSON.stringify(row));
+                this.save();
+            },
+            changeReference(row) {
+                this.entity = JSON.parse(JSON.stringify(row));
+                this.save();
+            },
             setPer(obj) {
                 this.entity = JSON.parse(JSON.stringify(obj))
                 this.vis = true;
@@ -236,7 +247,7 @@
                 location.href = "/page/end/login.html";
             },
             loadTable() {
-                $.get(urlBase + "/page?pageNum=" + this.pageNum + "&pageSize=" + this.pageSize + "&name=" + this.search).then(res => {
+                $.get(urlBase + "/page?pageNum=" + this.pageNum + "&pageSize=" + this.pageSize + "&title=" + this.search).then(res => {
                     this.tableData = res.data.records;
                     this.total = res.data.total;
                 });
@@ -288,9 +299,9 @@
                     this.vis = false;
 
                     // 重新请求用户基础数据
-                    $.get("/api/user/detail/" + this.user.username).then(res => {
-                        this.user = res.data;
-                        sessionStorage.setItem("user", JSON.stringify(this.user));
+                    $.get("/api/paper/detail/" + this.paper.name).then(res => {
+                        this.paper = res.data;
+                        sessionStorage.setItem("paper", JSON.stringify(this.paper));
                         parent.call()
                     })
                 })
